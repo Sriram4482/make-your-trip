@@ -15,9 +15,10 @@ app.use(bodyParser.json());
 app.use(express.static('public'));
 
 // Connect to MongoDB
-mongoose.connect('mongodb://localhost:27017/travelDB')
+mongoose.connect("mongodb+srv://rollsrider582:Akm4UY8B2Np9yuNg@cluster0.mongodb.net/travelDB")
     .then(() => console.log('✅ MongoDB connected'))
     .catch(err => console.error('❌ MongoDB connection error:', err));
+
 
 
 
@@ -41,9 +42,7 @@ const transporter = nodemailer.createTransport({
 });
 
 // Serve the frontend
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));
-});
+app.use(express.static('public'));
 
 // Handle Contact Form Submissions
 app.post('/contact', async (req, res) => {
